@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>CROSS ROADS – Menu</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Nunito+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-main: #f7f2e9;
+      --card-bg: #ffffff;
+      --accent: #123326;
+      --accent-soft: #e2d5c2;
+      --text-main: #1b1f23;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Nunito Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg-main);
+      color: var(--text-main);
+      min-height: 100vh;
+      padding-bottom: 80px; /* space for checkout bar */
+    }
+    h1, h2, h3 { font-family: "Playfair Display", serif; }
+
+    .page-wrapper {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 24px 16px 40px;
+    }
+
+    .top-bar {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      text-align: center;
+      padding: 8px 16px;
+      border-bottom: 1px solid var(--accent-soft);
+    }
+
+    .brand {
+      text-align: center;
+      padding: 18px 16px 10px;
+      font-size: 1.4rem;
+      letter-spacing: 0.25em;
+    }
+
+    .brand span { font-family: "Playfair Display", serif; }
+
+    .menu-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin: 24px 0 20px;
+      gap: 16px;
+    }
+
+    .menu-header h1 {
+      font-size: 1.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+    }
+
+    .menu-header p {
+      max-width: 400px;
+      font-size: 0.9rem;
+      color: #555;
+    }
+
+    .btn-ghost {
+      border-radius: 999px;
+      padding: 8px 16px;
+      border: 1px solid var(--accent);
+      background: transparent;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      cursor: pointer;
+    }
+
+    .btn-ghost:hover {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    /* CATEGORY GRID  */
+    #category-view {
+      margin-top: 10px;
+    }
+
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 18px;
+    }
+
+    .category-card {
+      background: var(--card-bg);
+      border-radius: 8px;
+      padding: 18px 14px;
+      border: 1px solid var(--accent-soft);
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+    }
+
+    .category-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .category-name {
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .category-note {
+      font-size: 0.75rem;
+      color: #777;
+      margin-top: 4px;
+    }
+
+    .category-arrow {
+      font-size: 1.1rem;
+      color: var(--accent);
+    }
+
+    /* ITEMS VIEW  */
+    #items-view {
+      display: none;
+      margin-top: 8px;
+    }
+
+    .items-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 18px;
+      gap: 10px;
+    }
+
+    .items-header-title {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .items-header-title h2 {
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: 1.3rem;
+    }
+
+    .items-header-title p {
+      font-size: 0.9rem;
+      color: #555;
+    }
+
+    .items-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 16px;
+    }
+
+    .item-card {
+      background: var(--card-bg);
+      border-radius: 10px;
+      padding: 14px 14px 12px;
+      border: 1px solid var(--accent-soft);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+    }
+
+    .item-name {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 4px;
+    }
+
+    .item-desc {
+      font-size: 0.8rem;
+      color: #666;
+      margin-bottom: 10px;
+      min-height: 34px;
+    }
+
+    .item-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: auto;
+      gap: 8px;
+    }
+
+    .item-price {
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    .qty-controls {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border-radius: 999px;
+      border: 1px solid var(--accent-soft);
+      padding: 4px 8px;
+      font-size: 0.8rem;
+    }
+
+    .qty-btn {
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+      width: 20px;
+      line-height: 1;
+    }
+
+    .qty-value {
+      min-width: 18px;
+      text-align: center;
+      font-size: 0.85rem;
+    }
+
+    /* CHECKOUT BAR */
+    .checkout-bar {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: #fdf8f0;
+      border-top: 1px solid var(--accent-soft);
+      padding: 10px 16px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .checkout-inner {
+      max-width: 1100px;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.9rem;
+    }
+
+    .checkout-summary span {
+      font-weight: 600;
+    }
+
+    .btn-checkout {
+      border-radius: 999px;
+      padding: 8px 18px;
+      border: none;
+      background: var(--accent);
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.8rem;
+      cursor: pointer;
+    }
+
+    .btn-checkout:hover {
+      background: #0b2118;
+    }
+
+    .hidden { display: none !important; }
+
+    @media (max-width: 768px) {
+      .menu-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .items-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="top-bar">Pan-Indian fine dining & home-style favorites</div>
+  <div class="brand"><span>CROSS ROADS</span> &nbsp;MENU</div>
+
+  <div class="page-wrapper">
+    <div class="menu-header">
+      <div>
+        <h1>Our Menu</h1>
+        <p>Select a category to explore dishes. Use the + / − buttons to choose how many of each item you want.</p>
+      </div>
+      <button class="btn-ghost" onclick="window.close()">Back to Main Site</button>
+    </div>
+
+    <!-- CATEGORY GRID VIEW -->
+    <section id="category-view">
+      <div class="category-grid" id="category-grid">
+        <!-- Filled by JS -->
+      </div>
+    </section>
+
+    <!-- ITEMS VIEW -->
+    <section id="items-view">
+      <div class="items-header">
+        <div class="items-header-title">
+          <h2 id="items-category-title"></h2>
+          <p id="items-category-subtitle"></p>
+        </div>
+        <button class="btn-ghost" onclick="showCategoryView()">&larr; Back to Menu Categories</button>
+      </div>
+      <div class="items-grid" id="items-grid">
+        <!-- Filled by JS -->
+      </div>
+    </section>
+  </div>
+
+  <!-- CHECKOUT BAR -->
+  <div class="checkout-bar">
+    <div class="checkout-inner">
+      <div class="checkout-summary">
+        Items in cart: <span id="cart-count">0</span> • Total: $<span id="cart-total">0.00</span>
+      </div>
+      <button class="btn-checkout" onclick="handleCheckout()">Checkout</button>
+    </div>
+  </div>
+
+  <script>
+    // Data for categories + at least 5 items each
+    const menuData = [
+      {
+        id: "popular",
+        name: "Popular Items",
+        subtitle: "Guest favorites from across the menu.",
+        items: [
+          { name: "Chicken 65", desc: "Crispy, spicy chicken with South Indian spices.", price: 11.99 },
+          { name: "Paneer Tikka", desc: "Marinated cottage cheese cooked in the tandoor.", price: 12.49 },
+          { name: "Hyderabadi Dum Biryani", desc: "Aromatic basmati rice with layered spices.", price: 15.99 },
+          { name: "Masala Dosa", desc: "Crisp rice crepe with spiced potato filling.", price: 10.49 },
+          { name: "Butter Chicken", desc: "Creamy tomato gravy with tender chicken.", price: 14.99 },
+        ],
+      },
+      {
+        id: "appetizers",
+        name: "Appetizers",
+        subtitle: "Perfect starts to your meal, inspired by Indian street food.",
+        items: [
+          { name: "Onion Pakora", desc: "Crispy onion fritters with house chutneys.", price: 7.99 },
+          { name: "Spinach Pakora", desc: "Spinach leaves in a spiced lentil batter.", price: 7.99 },
+          { name: "Mirchi Bhajji", desc: "Stuffed green chilies, deep fried.", price: 8.49 },
+          { name: "Veg Samosa", desc: "Two pastries filled with spiced potatoes & peas.", price: 4.99 },
+          { name: "Baby Corn Manchurian", desc: "Crispy baby corn tossed in Indo-Chinese sauce.", price: 10.99 },
+        ],
+      },
+      {
+        id: "soups-salads",
+        name: "Soups & Salads",
+        subtitle: "Light, comforting, and full of flavor.",
+        items: [
+          { name: "Tomato Shorba", desc: "Tomato soup with Indian spices & herbs.", price: 3.99 },
+          { name: "Sambar", desc: "Lentil-based vegetable stew with tamarind.", price: 3.99 },
+          { name: "Rasam", desc: "Peppery, tangy South Indian soup.", price: 3.99 },
+          { name: "Green Salad", desc: "Crisp greens with lemon dressing.", price: 3.99 },
+          { name: "Sweet Corn Soup", desc: "Creamy corn soup with veggies.", price: 4.49 },
+        ],
+      },
+      {
+        id: "breads",
+        name: "Breads & Side Orders",
+        subtitle: "Freshly baked Indian breads from the tandoor.",
+        items: [
+          { name: "Butter Naan", desc: "Soft leavened bread brushed with butter.", price: 2.99 },
+          { name: "Garlic Naan", desc: "Naan with garlic & cilantro.", price: 3.49 },
+          { name: "Tandoori Roti", desc: "Whole-wheat flatbread from the tandoor.", price: 2.49 },
+          { name: "Laccha Paratha", desc: "Layered flaky paratha.", price: 3.99 },
+          { name: "Plain Basmati Rice", desc: "Steamed long-grain basmati rice.", price: 2.99 },
+        ],
+      },
+      {
+        id: "south-indian",
+        name: "South Indian Specialties",
+        subtitle: "Classics from Tamil Nadu, Andhra, Karnataka & beyond.",
+        items: [
+          { name: "Idli Sambar", desc: "Steamed rice cakes served with sambar & chutneys.", price: 8.99 },
+          { name: "Masala Dosa", desc: "Crispy dosa filled with spiced potatoes.", price: 10.49 },
+          { name: "Medu Vada", desc: "Crispy lentil doughnuts with sambar.", price: 8.49 },
+          { name: "Podi Dosa", desc: "Dosa with spicy lentil powder & ghee.", price: 10.99 },
+          { name: "Upma", desc: "Savory semolina porridge with vegetables.", price: 7.99 },
+        ],
+      },
+      {
+        id: "north-indian",
+        name: "North Indian Specialties",
+        subtitle: "Rich gravies and tandoor favorites from the North.",
+        items: [
+          { name: "Butter Chicken", desc: "Tandoori chicken in a creamy tomato sauce.", price: 14.99 },
+          { name: "Paneer Butter Masala", desc: "Paneer in a buttery tomato gravy.", price: 13.49 },
+          { name: "Dal Makhani", desc: "Slow-cooked black lentils with cream.", price: 11.99 },
+          { name: "Chole Bhature", desc: "Chickpea curry with fried bread.", price: 12.49 },
+          { name: "Kadai Veg", desc: "Seasonal vegetables tossed with spices.", price: 12.99 },
+        ],
+      },
+      {
+        id: "biryani",
+        name: "Biryani & Rice Items",
+        subtitle: "Fragrant rice dishes layered with spices and slow cooked.",
+        items: [
+          { name: "Hyderabadi Chicken Biryani", desc: "Spiced chicken with aromatic basmati.", price: 15.99 },
+          { name: "Hyderabadi Mutton Biryani", desc: "Slow-cooked lamb with basmati rice.", price: 17.99 },
+          { name: "Veg Biryani", desc: "Seasonal vegetables in fragrant rice.", price: 13.99 },
+          { name: "Egg Biryani", desc: "Boiled eggs with spiced rice.", price: 13.49 },
+          { name: "Curd Rice", desc: "Cooling yogurt rice with tempering.", price: 7.99 },
+        ],
+      },
+      {
+        id: "indo-chinese",
+        name: "Indo Chinese",
+        subtitle: "Bold, tangy flavors with an Indian twist.",
+        items: [
+          { name: "Gobi Manchurian", desc: "Crispy cauliflower in Manchurian sauce.", price: 9.99 },
+          { name: "Veg Hakka Noodles", desc: "Stir-fried noodles with vegetables.", price: 10.49 },
+          { name: "Chicken Fried Rice", desc: "Wok-tossed rice with chicken & veggies.", price: 11.49 },
+          { name: "Chilli Paneer", desc: "Paneer cubes with peppers & chili sauce.", price: 11.99 },
+          { name: "Veg Fried Rice", desc: "Classic Indo-Chinese fried rice.", price: 9.99 },
+        ],
+      },
+      {
+        id: "beverages",
+        name: "Beverages",
+        subtitle: "Coolers, lassis and premium Indian spirits.",
+        items: [
+          { name: "Mango Lassi", desc: "Sweet yogurt drink with mango pulp.", price: 4.99 },
+          { name: "Sweet Lassi", desc: "Traditional sweet yogurt drink.", price: 3.99 },
+          { name: "Masala Chai", desc: "Spiced Indian milk tea.", price: 2.99 },
+          { name: "Nimbu Soda", desc: "Fresh lime soda, sweet or salted.", price: 3.49 },
+          { name: "Premium Indian Whisky", desc: "Ask server for today’s selection.", price: 8.99 },
+        ],
+      },
+      {
+        id: "desserts",
+        name: "Desserts",
+        subtitle: "End on a sweet Indian note.",
+        items: [
+          { name: "Gulab Jamun", desc: "Milk dumplings in warm sugar syrup.", price: 5.49 },
+          { name: "Rasmalai", desc: "Soft cheese patties in saffron milk.", price: 6.49 },
+          { name: "Kulfi", desc: "Traditional Indian ice cream.", price: 4.99 },
+          { name: "Gajar Halwa", desc: "Warm carrot pudding with nuts.", price: 5.99 },
+          { name: "Elaneer Pudding", desc: "Tender coconut pudding with cardamom.", price: 6.49 },
+        ],
+      },
+    ];
+
+    // Simple cart: { "categoryId-itemIndex": quantity }
+    const cart = {};
+
+    const categoryGrid = document.getElementById("category-grid");
+    const categoryView = document.getElementById("category-view");
+    const itemsView = document.getElementById("items-view");
+    const itemsGrid = document.getElementById("items-grid");
+    const itemsCategoryTitle = document.getElementById("items-category-title");
+    const itemsCategorySubtitle = document.getElementById("items-category-subtitle");
+    const cartCountEl = document.getElementById("cart-count");
+    const cartTotalEl = document.getElementById("cart-total");
+
+    function renderCategories() {
+      categoryGrid.innerHTML = "";
+      menuData.forEach((cat) => {
+        const card = document.createElement("div");
+        card.className = "category-card";
+        card.onclick = () => showItems(cat.id);
+
+        card.innerHTML = `
+          <div>
+            <div class="category-name">${cat.name}</div>
+            <div class="category-note">${cat.items.length} items</div>
+          </div>
+          <div class="category-arrow">›</div>
+        `;
+        categoryGrid.appendChild(card);
+      });
+    }
+
+    function showItems(categoryId) {
+      const category = menuData.find((c) => c.id === categoryId);
+      if (!category) return;
+
+      categoryView.style.display = "none";
+      itemsView.style.display = "block";
+
+      itemsCategoryTitle.textContent = category.name;
+      itemsCategorySubtitle.textContent = category.subtitle;
+
+      itemsGrid.innerHTML = "";
+      category.items.forEach((item, index) => {
+        const key = `${categoryId}-${index}`;
+        const qty = cart[key] || 0;
+
+        const card = document.createElement("div");
+        card.className = "item-card";
+        card.innerHTML = `
+          <div class="item-name">${item.name}</div>
+          <div class="item-desc">${item.desc}</div>
+          <div class="item-footer">
+            <div class="item-price">$${item.price.toFixed(2)}</div>
+            <div class="qty-controls">
+              <button class="qty-btn" onclick="changeQty('${categoryId}', ${index}, -1)">−</button>
+              <span class="qty-value" id="qty-${key}">${qty}</span>
+              <button class="qty-btn" onclick="changeQty('${categoryId}', ${index}, 1)">+</button>
+            </div>
+          </div>
+        `;
+        itemsGrid.appendChild(card);
+      });
+    }
+
+    function showCategoryView() {
+      itemsView.style.display = "none";
+      categoryView.style.display = "block";
+    }
+
+    // Update quantity and recalc cart
+    function changeQty(categoryId, itemIndex, delta) {
+      const key = `${categoryId}-${itemIndex}`;
+      const category = menuData.find((c) => c.id === categoryId);
+      if (!category) return;
+      const item = category.items[itemIndex];
+      if (!item) return;
+
+      const current = cart[key] || 0;
+      let next = current + delta;
+      if (next < 0) next = 0;
+      cart[key] = next;
+
+      const qtyEl = document.getElementById(`qty-${key}`);
+      if (qtyEl) qtyEl.textContent = next;
+
+      recalcCart();
+    }
+
+    function recalcCart() {
+      let totalItems = 0;
+      let totalPrice = 0;
+
+      Object.keys(cart).forEach((key) => {
+        const qty = cart[key];
+        if (qty <= 0) return;
+
+        const [categoryId, indexStr] = key.split("-");
+        const category = menuData.find((c) => c.id === categoryId);
+        if (!category) return;
+        const item = category.items[Number(indexStr)];
+        if (!item) return;
+
+        totalItems += qty;
+        totalPrice += qty * item.price;
+      });
+
+      cartCountEl.textContent = totalItems;
+      cartTotalEl.textContent = totalPrice.toFixed(2);
+    }
+
+    function handleCheckout() {
+      let summary = "Your order:\n\n";
+      let hasItems = false;
+
+      Object.keys(cart).forEach((key) => {
+        const qty = cart[key];
+        if (qty <= 0) return;
+
+        const [categoryId, indexStr] = key.split("-");
+        const category = menuData.find((c) => c.id === categoryId);
+        if (!category) return;
+        const item = category.items[Number(indexStr)];
+        if (!item) return;
+
+        hasItems = true;
+        summary += `${qty} x ${item.name} ($${item.price.toFixed(2)})\n`;
+      });
+
+      if (!hasItems) {
+        alert("Your cart is empty. Please add some items first.");
+        return;
+      }
+
+      summary += `\nTotal items: ${cartCountEl.textContent}\nTotal: $${cartTotalEl.textContent}\n\n(This is a demo. Next step: connect to payment or order system.)`;
+      alert(summary);
+    }
+
+    // Expose changeQty for onclick in HTML
+    window.changeQty = changeQty;
+
+    // Init
+    renderCategories();
+    recalcCart();
+  </script>
+</body>
+</html>

@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Cross Roads Bistro</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Google font similar to Rosewood style -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Nunito+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ====== GLOBAL ====== */
+    :root {
+      --bg-main: #f7f2e9;     /* warm cream */
+      --text-main: #1b1f23;   /* dark text */
+      --accent-dark: #123326; /* deep green like Rosewood button */
+      --accent-gold: #b78b4b; /* subtle gold */
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Nunito Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg-main);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* ====== TOP BAR / BRAND ====== */
+    .top-bar {
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      text-align: center;
+      padding: 8px 16px;
+      border-bottom: 1px solid #e0d7c8;
+    }
+
+    .brand-logo {
+      text-align: center;
+      padding: 18px 16px 10px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      font-family: "Playfair Display", serif;
+      font-size: 1.3rem;
+    }
+
+    /* ====== NAVBAR ====== */
+    .nav-wrapper {
+      border-top: 1px solid #e0d7c8;
+      border-bottom: 1px solid #e0d7c8;
+      background-color: #fdf8f0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 24px;
+      font-size: 0.85rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0;
+      height: 1px;
+      background: var(--accent-dark);
+      transition: width 0.25s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .btn-outline,
+    .btn-primary {
+      border-radius: 999px;
+      padding: 8px 18px;
+      border: 1px solid var(--accent-dark);
+      font-size: 0.8rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      cursor: pointer;
+      background: transparent;
+      transition: all 0.25s ease;
+    }
+
+    .btn-primary {
+      background: var(--accent-dark);
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background: #0b2118;
+    }
+
+    .btn-outline:hover {
+      background: var(--accent-dark);
+      color: #fff;
+    }
+
+    /* ====== HERO ====== */
+    .hero {
+      position: relative;
+      height: 75vh;
+      min-height: 480px;
+      background-image: url("images/tittle.jpg");
+      background-size: cover;
+      background-position: center;
+      color: white;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0.45) 0%,
+        rgba(0, 0, 0, 0.6) 60%,
+        rgba(0, 0, 0, 0.8) 100%
+      );
+    }
+
+    .hero-content {
+      position: relative;
+      max-width: 1100px;
+      width: 100%;
+      padding: 40px 24px 56px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 24px;
+    }
+
+    .hero-text {
+      max-width: 520px;
+    }
+
+    .hero-subtitle {
+      font-size: 0.85rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .hero-title {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(2.2rem, 3vw + 1rem, 3.2rem);
+      margin-bottom: 10px;
+    }
+
+    .hero-desc {
+      font-size: 0.95rem;
+      max-width: 460px;
+      opacity: 0.92;
+    }
+
+    .hero-cta {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 10px;
+      text-align: right;
+      font-size: 0.85rem;
+    }
+
+    .hero-cta span {
+      opacity: 0.9;
+    }
+
+    /* ====== SECTIONS (COMMON) ====== */
+    section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 64px 24px;
+      border-bottom: 1px solid #e0d7c8;
+    }
+
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      gap: 40px;
+      align-items: flex-start;
+      margin-bottom: 32px;
+    }
+
+    .section-title {
+      font-family: "Playfair Display", serif;
+      font-size: 1.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .section-subtitle {
+      max-width: 520px;
+      font-size: 0.95rem;
+      color: #555;
+    }
+
+    /* ====== MENU ====== */
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 32px;
+    }
+
+    .menu-card {
+      background: #fdf8f0;
+      padding: 24px;
+      border-radius: 8px;
+      border: 1px solid #e0d7c8;
+    }
+
+    .menu-card h3 {
+      font-family: "Playfair Display", serif;
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+
+    .menu-card ul {
+      list-style: none;
+      font-size: 0.9rem;
+    }
+
+    .menu-card li + li {
+      margin-top: 6px;
+    }
+
+    /* ====== RESERVATIONS ====== */
+    .reservation-wrapper {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 32px;
+      align-items: flex-start;
+    }
+
+    .reservation-note {
+      font-size: 0.9rem;
+      color: #555;
+    }
+
+    .reservation-form {
+      background: #fdf8f0;
+      padding: 24px;
+      border-radius: 8px;
+      border: 1px solid #e0d7c8;
+    }
+
+    .form-row {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 14px;
+    }
+
+    .form-group {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      padding: 8px 10px;
+      border-radius: 4px;
+      border: 1px solid #d7cbb7;
+      font-size: 0.9rem;
+      font-family: inherit;
+      background-color: #fffdf8;
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 70px;
+    }
+
+    /* ====== WHAT'S NEW ====== */
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+
+    .news-card {
+      padding: 24px;
+      border-radius: 8px;
+      border: 1px solid #e0d7c8;
+      background: #fffdf8;
+      font-size: 0.9rem;
+    }
+
+    .news-date {
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 0.75rem;
+      color: #777;
+      margin-bottom: 8px;
+    }
+
+    .news-title {
+      font-family: "Playfair Display", serif;
+      font-size: 1.05rem;
+      margin-bottom: 6px;
+    }
+
+    /* ====== CONTACT / LOCATION ====== */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 32px;
+    }
+
+    .contact-block h3 {
+      font-family: "Playfair Display", serif;
+      font-size: 1.1rem;
+      margin-bottom: 6px;
+    }
+
+    .contact-block p {
+      font-size: 0.92rem;
+      margin-bottom: 10px;
+    }
+
+    .hours-list {
+      list-style: none;
+      font-size: 0.9rem;
+    }
+
+    .hours-list li + li {
+      margin-top: 4px;
+    }
+
+    .map-placeholder {
+      width: 100%;
+      min-height: 260px;
+      border-radius: 6px;
+      border: 1px solid #e0d7c8;
+      background: #e8dfcf;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      color: #555;
+    }
+
+    /* ====== FOOTER ====== */
+    footer {
+      padding: 32px 24px 40px;
+      font-size: 0.8rem;
+    }
+
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      justify-content: space-between;
+      border-top: 1px solid #e0d7c8;
+      padding-top: 18px;
+    }
+
+    .footer-col-title {
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 0.75rem;
+      margin-bottom: 10px;
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li + li {
+      margin-top: 4px;
+    }
+
+    /* ====== RESPONSIVE ====== */
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .hero {
+        height: 70vh;
+      }
+
+      .hero-content {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .hero-cta {
+        align-items: flex-start;
+        text-align: left;
+      }
+
+      .reservation-wrapper,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    Indian style bistro & fine dining in the heart of Dallas
+  </div>
+
+  <!-- BRAND -->
+  <div class="brand-logo">
+    CROSS&nbsp;ROADS&nbsp;BISTRO
+  </div>
+
+  <!-- NAVBAR -->
+  <div class="nav-wrapper">
+    <nav>
+      <div class="nav-links">
+        <a href="#hero">Discover</a>
+        <a href="menu.html" target="_blank" rel="noopener noreferrer">Menu</a><a href="#menu">Menu</a>
+        <a href="#reservations">Reservations</a>
+        <a href="#news">What’s New</a>
+        <a href="#contact">Visit Us</a>
+      </div>
+      <div class="nav-actions">
+        <button class="btn-outline" onclick="scrollToSection('online-order')">Order Online</button>
+        <button class="btn-primary" onclick="scrollToSection('reservations')">Reserve</button>
+      </div>
+    </nav>
+  </div>
+
+  <!-- HERO -->
+  <header class="hero" id="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-text">
+        <div class="hero-subtitle">A Pan-Indian Fine Dining Experience</div>
+        <h1 class="hero-title">CROSS ROADS – Where India Meets Your Plate</h1>
+        <p class="hero-desc">
+           Embark on a culinary journey from the aromatic valleys of Kashmir to the
+            spice-kissed coasts of Kanyakumari. At CROSS ROADS, street-style favorites meet
+         gourmet elegance, crafted with region-specific spices sourced directly from their
+         origins. Explore India's diverse flavors, elevated with premium Indian liquors for
+            an unforgettable dining experience.
+        </p>
+      </div>
+      <div class="hero-cta">
+        <button class="btn-primary" onclick="scrollToSection('reservations')">Book a Table</button>
+        <span>Or call us at (214) 555-1234</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- MENU SECTION -->
+  <section id="menu">
+    <div class="section-heading">
+      <h2 class="section-title">Menu</h2>
+      <p class="section-subtitle">
+        A curated journey across India—from Kashmir’s aromatic valleys to Kerala’s coastal spice routes.
+      At CROSS ROADS, every dish is crafted with regional authenticity, origin-sourced spices,
+      and a fine-dining touch that elevates India’s timeless culinary heritage.
+      </p>
+    </div>
+
+    <div class="menu-grid">
+      <div class="menu-card">
+        <h3>Lunch</h3>
+        <ul>
+          <li>Kashmiri Rogan Josh • slow-cooked lamb, aromatic red chili</li>
+          <li>Delhi Street Chaat Platter • dahi puri, papdi chaat, tangy chutneys</li>
+          <li>South Indian Thali • sambar, rasam, poriyal, curd rice</li>
+        </ul>
+      </div>
+      <div class="menu-card">
+        <h3>Dinner</h3>
+        <ul>
+          <li>Hyderabadi Dum Biryani • saffron rice, hand-ground spice blend</li>
+          <li>Goan Prawn Curry • kokum, coconut, coastal spice infusion</li>
+          <li>Paneer Tikka Masala • charred cottage cheese, creamy tomato fenugreek sauce</li>
+        </ul>
+      </div>
+      <div class="menu-card">
+        <h3>Desserts & Wine</h3>
+        <ul>
+          <li>Gulab Jamun Cheesecake • rose syrup, pistachio crumble</li>
+          <li>Kerala Elaneer Pudding • tender coconut, cardamom</li>
+          <li>Premium Indian Liquors • Amrut, Paul John, artisanal spirits</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESERVATIONS SECTION -->
+  <section id="reservations">
+    <div class="section-heading">
+      <h2 class="section-title">Reservations</h2>
+      <p class="section-subtitle">
+        Reserve your table online or by phone. For parties of 8 or more, please reach out to our team
+        and we’ll be happy to assist with private dining options.
+      </p>
+    </div>
+
+    <div class="reservation-wrapper">
+      <div class="reservation-note">
+        <p>
+          We kindly hold reservations for 15 minutes past your booking time.
+          Complimentary valet parking is available at the entrance on Turtle Creek Boulevard.
+        </p>
+        <br />
+        <p>
+          If you have any dietary requirements or special celebrations, share them with us below
+          and our team will make the evening memorable.
+        </p>
+      </div>
+
+      <form class="reservation-form" onsubmit="handleReservationSubmit(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="res-name">Name</label>
+            <input id="res-name" type="text" required />
+          </div>
+          <div class="form-group">
+            <label for="res-phone">Phone</label>
+            <input id="res-phone" type="tel" required />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="res-email">Email</label>
+            <input id="res-email" type="email" required />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="res-date">Date</label>
+            <input id="res-date" type="date" required />
+          </div>
+          <div class="form-group">
+            <label for="res-time">Time</label>
+            <input id="res-time" type="time" required />
+          </div>
+          <div class="form-group">
+            <label for="res-guests">Guests</label>
+            <select id="res-guests" required>
+              <option value="" disabled selected>Choose</option>
+              <option>1</option><option>2</option><option>3</option><option>4</option>
+              <option>5</option><option>6</option><option>7</option><option>8+</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="res-notes">Occasion / Notes</label>
+            <textarea id="res-notes" placeholder="Birthday, anniversary, dietary needs…"></textarea>
+          </div>
+        </div>
+
+        <button class="btn-primary" type="submit">Request Reservation</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ONLINE ORDER (CTA SECTION) -->
+  <section id="online-order">
+    <div class="section-heading">
+      <h2 class="section-title">Order Online</h2>
+      <p class="section-subtitle">
+        Prefer a quiet night in? Enjoy Turtle Creek Bistro at home with pickup and delivery partners.
+      </p>
+    </div>
+
+    <p style="max-width: 640px; font-size: 0.94rem; margin-bottom: 18px;">
+      Place your order directly with us or through our delivery partners below.
+    </p>
+
+    <div style="display: flex; flex-wrap: wrap; gap: 12px;">
+      <button class="btn-primary">Start Pickup Order</button>
+      <button class="btn-outline">Order on DoorDash</button>
+      <button class="btn-outline">Order on Uber Eats</button>
+    </div>
+  </section>
+
+  <!-- WHAT'S NEW -->
+  <section id="news">
+    <div class="section-heading">
+      <h2 class="section-title">What’s New</h2>
+      <p class="section-subtitle">
+        Seasonal menus, live music, and special collaborations — stay up to date with the latest
+        happenings at the restaurant.
+      </p>
+    </div>
+
+    <div class="news-grid">
+      <article class="news-card">
+        <div class="news-date">December 20, 2025</div>
+        <h3 class="news-title">Grand Winter Spice Tasting Menu</h3>
+        <p>
+          A five-course culinary journey featuring Kashmiri chili roasts, Hyderabadi biryani pearls,
+            and a festive toast with premium Indian spirits. Limited seats available.
+        </p>
+      </article>
+      <article class="news-card">
+        <div class="news-date">January 5, 2026</div>
+        <h3 class="news-title">Bollywood Nights & Live Music</h3>
+        <p>
+          Every Thursday, enjoy curated Indian cocktails, soulful live music, and small plates
+            inspired by Mumbai’s vibrant streets and Delhi’s night markets.
+        </p>
+      </article>
+      <article class="news-card">
+        <div class="news-date">February 14, 2026</div>
+        <h3 class="news-title">Valentine’s at Turtle Creek</h3>
+        <p>
+          Celebrate with a romantic three-course menu highlighting regional specialties,
+            artisanal desserts, and rose-infused cocktails. A fine-dining Indian experience
+            made for unforgettable moments.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <!-- CONTACT / LOCATION -->
+  <section id="contact">
+    <div class="section-heading">
+      <h2 class="section-title">Visit Us</h2>
+      <p class="section-subtitle">
+       Located in the cultural heart of the city, CROSS ROADS blends India’s vibrant spice routes
+      with a fine-dining ambiance. Valet parking is available for all dinner guests.
+      </p>
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-block">
+        <h3>Address</h3>
+        <p>
+          2821 Turtle Creek Blvd.<br />
+          Dallas, TX 75219, USA
+        </p>
+
+        <h3>Contact</h3>
+        <p>
+          Tel: (214) 555-1234<br />
+          Email: reservations@crossroadsbistro.com
+        </p>
+
+        <h3>Hours</h3>
+        <ul class="hours-list">
+          <li>Lunch: Mon–Fri &nbsp; 11:30am – 2:30pm</li>
+          <li>Dinner: Daily &nbsp; 5:30pm – 10:00pm</li>
+          <li>Brunch: Sun &nbsp; 10:30am – 2:00pm</li>
+        </ul>
+      </div>
+
+      <div class="map-placeholder">
+        Embed Google Map here (use an iframe once you have the real address)
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-col-title">Contact Us</div>
+        <ul class="footer-links">
+          <li>(214) 555-1234</li>
+          <li>info@tcrossroads.com</li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Follow Us</div>
+        <ul class="footer-links">
+          <li>Instagram</li>
+          <li>Facebook</li>
+          <li>Twitter</li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Policies</div>
+        <ul class="footer-links">
+          <li>Privacy Policy</li>
+          <li>Cookie Policy</li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-col-title">© 2025 crossroadsbistro</div>
+        <p>Designed for a  Pan-Indian dining experience in Dallas.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ====== BASIC JS (smooth scroll + fake submit) ====== -->
+  <script>
+    function scrollToSection(id) {
+      const section = document.getElementById(id);
+      if (!section) return;
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+
+    function handleReservationSubmit(e) {
+      e.preventDefault();
+      alert("Reservation request sent! (Next step: connect this form to a backend or email service.)");
+      e.target.reset();
+    }
+  </script>
+</body>
+</html>
