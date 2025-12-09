@@ -169,18 +169,33 @@
     .item-card {
       background: var(--card-bg);
       border-radius: 10px;
-      padding: 14px 14px 12px;
+      padding: 0;
       border: 1px solid var(--accent-soft);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+      overflow: hidden;
+    }
+
+    .item-image {
+      width: 100%;
+      height: 150px;
+      overflow: hidden;
+      background: #e0d7c8;
+    }
+
+    .item-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     .item-name {
       font-weight: 600;
       font-size: 0.95rem;
       margin-bottom: 4px;
+      padding: 10px 14px 0;
     }
 
     .item-desc {
@@ -188,6 +203,7 @@
       color: #666;
       margin-bottom: 10px;
       min-height: 34px;
+      padding: 0 14px;
     }
 
     .item-footer {
@@ -196,6 +212,7 @@
       align-items: center;
       margin-top: auto;
       gap: 8px;
+      padding: 0 14px 12px;
     }
 
     .item-price {
@@ -340,11 +357,11 @@
         name: "Popular Items",
         subtitle: "Guest favorites from across the menu.",
         items: [
-          { name: "Chicken 65", desc: "Crispy, spicy chicken with South Indian spices.", price: 11.99 },
-          { name: "Paneer Tikka", desc: "Marinated cottage cheese cooked in the tandoor.", price: 12.49 },
-          { name: "Hyderabadi Dum Biryani", desc: "Aromatic basmati rice with layered spices.", price: 15.99 },
-          { name: "Masala Dosa", desc: "Crisp rice crepe with spiced potato filling.", price: 10.49 },
-          { name: "Butter Chicken", desc: "Creamy tomato gravy with tender chicken.", price: 14.99 },
+          { name: "Chicken 65", desc: "Crispy, spicy chicken with South Indian spices.", price: 11.99, image: "images/menu/chicken65.jpeg" },
+          { name: "Paneer Tikka", desc: "Marinated cottage cheese cooked in the tandoor.", price: 12.49, image: "images/menu/pannertikka.jpeg" },
+          { name: "Hyderabadi Dum Biryani", desc: "Aromatic basmati rice with layered spices.", price: 15.99, image: "images/menu/Hyderabad dum biriyani.jpeg" },
+          { name: "Masala Dosa", desc: "Crisp rice crepe with spiced potato filling.", price: 10.49, image: "images/menu/masaladosa.jpeg" },
+          { name: "Butter Chicken", desc: "Creamy tomato gravy with tender chicken.", price: 14.99, image: "images/menu/Butterchicken.jpeg" },
         ],
       },
       {
@@ -352,11 +369,11 @@
         name: "Appetizers",
         subtitle: "Perfect starts to your meal, inspired by Indian street food.",
         items: [
-          { name: "Onion Pakora", desc: "Crispy onion fritters with house chutneys.", price: 7.99 },
-          { name: "Spinach Pakora", desc: "Spinach leaves in a spiced lentil batter.", price: 7.99 },
-          { name: "Mirchi Bhajji", desc: "Stuffed green chilies, deep fried.", price: 8.49 },
-          { name: "Veg Samosa", desc: "Two pastries filled with spiced potatoes & peas.", price: 4.99 },
-          { name: "Baby Corn Manchurian", desc: "Crispy baby corn tossed in Indo-Chinese sauce.", price: 10.99 },
+          { name: "Onion Pakora", desc: "Crispy onion fritters with house chutneys.", price: 7.99, image: "images/menu/onionpakora.jpeg" },
+          { name: "Spinach Pakora", desc: "Spinach leaves in a spiced lentil batter.", price: 7.99, image: "images/menu/spinachpakora.jpeg" },
+          { name: "Mirchi Bhajji", desc: "Stuffed green chilies, deep fried.", price: 8.49, image: "images/menu/Mirchi bajji.jpeg" },
+          { name: "Veg Samosa", desc: "Two pastries filled with spiced potatoes & peas.", price: 4.99, image: "images/menu/veg somasa.jpeg" },
+          { name: "Baby Corn Manchurian", desc: "Crispy baby corn tossed in Indo-Chinese sauce.", price: 10.99, image: "images/menu/Baby corn Manchurian.jpeg" },
         ],
       },
       {
@@ -364,11 +381,11 @@
         name: "Soups & Salads",
         subtitle: "Light, comforting, and full of flavor.",
         items: [
-          { name: "Tomato Shorba", desc: "Tomato soup with Indian spices & herbs.", price: 3.99 },
-          { name: "Sambar", desc: "Lentil-based vegetable stew with tamarind.", price: 3.99 },
-          { name: "Rasam", desc: "Peppery, tangy South Indian soup.", price: 3.99 },
-          { name: "Green Salad", desc: "Crisp greens with lemon dressing.", price: 3.99 },
-          { name: "Sweet Corn Soup", desc: "Creamy corn soup with veggies.", price: 4.49 },
+          { name: "Tomato Shorba", desc: "Tomato soup with Indian spices & herbs.", price: 3.99, image: "images/menu/tomato shorba.jpeg" },
+          { name: "Sambar", desc: "Lentil-based vegetable stew with tamarind.", price: 3.99, image: "images/menu/sambar.jpeg" },
+          { name: "Rasam", desc: "Peppery, tangy South Indian soup.", price: 3.99, image: "images/menu/rasam.jpeg" },
+          { name: "Green Salad", desc: "Crisp greens with lemon dressing.", price: 3.99, image: "images/menu/greensalad.jpeg" },
+          { name: "Sweet Corn Soup", desc: "Creamy corn soup with veggies.", price: 4.49, image: "images/menu/sweetcornsoup.jpeg" },
         ],
       },
       {
@@ -376,11 +393,11 @@
         name: "Breads & Side Orders",
         subtitle: "Freshly baked Indian breads from the tandoor.",
         items: [
-          { name: "Butter Naan", desc: "Soft leavened bread brushed with butter.", price: 2.99 },
-          { name: "Garlic Naan", desc: "Naan with garlic & cilantro.", price: 3.49 },
-          { name: "Tandoori Roti", desc: "Whole-wheat flatbread from the tandoor.", price: 2.49 },
-          { name: "Laccha Paratha", desc: "Layered flaky paratha.", price: 3.99 },
-          { name: "Plain Basmati Rice", desc: "Steamed long-grain basmati rice.", price: 2.99 },
+          { name: "Butter Naan", desc: "Soft leavened bread brushed with butter.", price: 2.99, image: "images/menu/butter nan.jpeg" },
+          { name: "Garlic Naan", desc: "Naan with garlic & cilantro.", price: 3.49, image: "images/menu/garlic nan.jpeg" },
+          { name: "Tandoori Roti", desc: "Whole-wheat flatbread from the tandoor.", price: 2.49, image: "images/menu/tandoor roti.jpeg" },
+          { name: "Laccha Paratha", desc: "Layered flaky paratha.", price: 3.99, image: "images/menu/lachaa parathaa.jpeg" },
+          { name: "Plain Basmati Rice", desc: "Steamed long-grain basmati rice.", price: 2.99, image: "images/menu/plain basmathi rice.jpeg" },
         ],
       },
       {
@@ -388,11 +405,11 @@
         name: "South Indian Specialties",
         subtitle: "Classics from Tamil Nadu, Andhra, Karnataka & beyond.",
         items: [
-          { name: "Idli Sambar", desc: "Steamed rice cakes served with sambar & chutneys.", price: 8.99 },
-          { name: "Masala Dosa", desc: "Crispy dosa filled with spiced potatoes.", price: 10.49 },
-          { name: "Medu Vada", desc: "Crispy lentil doughnuts with sambar.", price: 8.49 },
-          { name: "Podi Dosa", desc: "Dosa with spicy lentil powder & ghee.", price: 10.99 },
-          { name: "Upma", desc: "Savory semolina porridge with vegetables.", price: 7.99 },
+          { name: "Idli Sambar", desc: "Steamed rice cakes served with sambar & chutneys.", price: 8.99, image: "images/menu/idly sambar.jpeg" },
+          { name: "Masala Dosa", desc: "Crispy dosa filled with spiced potatoes.", price: 10.49, image: "images/menu/masala dosa.jpeg" },
+          { name: "Medu Vada", desc: "Crispy lentil doughnuts with sambar.", price: 8.49, image: "images/menu/medu vada.jpeg" },
+          { name: "Podi Dosa", desc: "Dosa with spicy lentil powder & ghee.", price: 10.99, image: "images/menu/podi dosa.jpeg" },
+          { name: "Upma", desc: "Savory semolina porridge with vegetables.", price: 7.99, image: "images/menu/upma.jpeg" },
         ],
       },
       {
@@ -400,11 +417,11 @@
         name: "North Indian Specialties",
         subtitle: "Rich gravies and tandoor favorites from the North.",
         items: [
-          { name: "Butter Chicken", desc: "Tandoori chicken in a creamy tomato sauce.", price: 14.99 },
-          { name: "Paneer Butter Masala", desc: "Paneer in a buttery tomato gravy.", price: 13.49 },
-          { name: "Dal Makhani", desc: "Slow-cooked black lentils with cream.", price: 11.99 },
-          { name: "Chole Bhature", desc: "Chickpea curry with fried bread.", price: 12.49 },
-          { name: "Kadai Veg", desc: "Seasonal vegetables tossed with spices.", price: 12.99 },
+          { name: "Butter Chicken", desc: "Tandoori chicken in a creamy tomato sauce.", price: 14.99, image: "images/menu/Butterchicken.jpeg" },
+          { name: "Paneer Butter Masala", desc: "Paneer in a buttery tomato gravy.", price: 13.49, image: "images/menu/panner butter masala.jpeg" },
+          { name: "Dal Makhani", desc: "Slow-cooked black lentils with cream.", price: 11.99, image: "images/menu/dal makkani.jpeg" },
+          { name: "Chole Bhature", desc: "Chickpea curry with fried bread.", price: 12.49, image: "images/menu/chole batture.jpeg" },
+          { name: "Kadai Veg", desc: "Seasonal vegetables tossed with spices.", price: 12.99, image: "images/menu/kadai veg.jpeg" },
         ],
       },
       {
@@ -412,11 +429,11 @@
         name: "Biryani & Rice Items",
         subtitle: "Fragrant rice dishes layered with spices and slow cooked.",
         items: [
-          { name: "Hyderabadi Chicken Biryani", desc: "Spiced chicken with aromatic basmati.", price: 15.99 },
-          { name: "Hyderabadi Mutton Biryani", desc: "Slow-cooked lamb with basmati rice.", price: 17.99 },
-          { name: "Veg Biryani", desc: "Seasonal vegetables in fragrant rice.", price: 13.99 },
-          { name: "Egg Biryani", desc: "Boiled eggs with spiced rice.", price: 13.49 },
-          { name: "Curd Rice", desc: "Cooling yogurt rice with tempering.", price: 7.99 },
+          { name: "Hyderabadi Chicken Biryani", desc: "Spiced chicken with aromatic basmati.", price: 15.99, image: "images/menu/Hyderabad dum biriyani.jpeg" },
+          { name: "Hyderabadi Mutton Biryani", desc: "Slow-cooked lamb with basmati rice.", price: 17.99, image: "images/menu/mutton biriyani.jpeg" },
+          { name: "Veg Biryani", desc: "Seasonal vegetables in fragrant rice.", price: 13.99, image: "images/menu/veg biriyani.jpeg" },
+          { name: "Egg Biryani", desc: "Boiled eggs with spiced rice.", price: 13.49, image: "images/menu/egg biriyani.jpeg" },
+          { name: "Curd Rice", desc: "Cooling yogurt rice with tempering.", price: 7.99, image: "images/menu/curd rice.jpeg" },
         ],
       },
       {
@@ -424,11 +441,11 @@
         name: "Indo Chinese",
         subtitle: "Bold, tangy flavors with an Indian twist.",
         items: [
-          { name: "Gobi Manchurian", desc: "Crispy cauliflower in Manchurian sauce.", price: 9.99 },
-          { name: "Veg Hakka Noodles", desc: "Stir-fried noodles with vegetables.", price: 10.49 },
-          { name: "Chicken Fried Rice", desc: "Wok-tossed rice with chicken & veggies.", price: 11.49 },
-          { name: "Chilli Paneer", desc: "Paneer cubes with peppers & chili sauce.", price: 11.99 },
-          { name: "Veg Fried Rice", desc: "Classic Indo-Chinese fried rice.", price: 9.99 },
+          { name: "Gobi Manchurian", desc: "Crispy cauliflower in Manchurian sauce.", price: 9.99, image: "images/menu/gobi manchurian.jpeg" },
+          { name: "Veg Hakka Noodles", desc: "Stir-fried noodles with vegetables.", price: 10.49, image: "images/menu/hakka noodels.jpeg" },
+          { name: "Chicken Fried Rice", desc: "Wok-tossed rice with chicken & veggies.", price: 11.49, image: "images/menu/chicken fried rice.jpeg" },
+          { name: "Chilli Paneer", desc: "Paneer cubes with peppers & chili sauce.", price: 11.99, image: "images/menu/chilli panner.jpeg" },
+          { name: "Veg Fried Rice", desc: "Classic Indo-Chinese fried rice.", price: 9.99, image: "images/menu/veg friend rice.jpeg" },
         ],
       },
       {
@@ -436,11 +453,11 @@
         name: "Beverages",
         subtitle: "Coolers, lassis and premium Indian spirits.",
         items: [
-          { name: "Mango Lassi", desc: "Sweet yogurt drink with mango pulp.", price: 4.99 },
-          { name: "Sweet Lassi", desc: "Traditional sweet yogurt drink.", price: 3.99 },
-          { name: "Masala Chai", desc: "Spiced Indian milk tea.", price: 2.99 },
-          { name: "Nimbu Soda", desc: "Fresh lime soda, sweet or salted.", price: 3.49 },
-          { name: "Premium Indian Whisky", desc: "Ask server for today’s selection.", price: 8.99 },
+          { name: "Mango Lassi", desc: "Sweet yogurt drink with mango pulp.", price: 4.99, image: "images/menu/mango lassi.jpeg" },
+          { name: "Sweet Lassi", desc: "Traditional sweet yogurt drink.", price: 3.99, image: "images/menu/sweet lassi.jpeg" },
+          { name: "Masala Chai", desc: "Spiced Indian milk tea.", price: 2.99, image: "images/menu/masala chai.jpeg" },
+          { name: "Nimbu Soda", desc: "Fresh lime soda, sweet or salted.", price: 3.49, image: "images/menu/nimbu pani.jpeg" },
+          { name: "Premium Indian Whisky", desc: "Ask server for today's selection.", price: 8.99, image: "images/menu/indian whiskey.jpeg" },
         ],
       },
       {
@@ -448,11 +465,11 @@
         name: "Desserts",
         subtitle: "End on a sweet Indian note.",
         items: [
-          { name: "Gulab Jamun", desc: "Milk dumplings in warm sugar syrup.", price: 5.49 },
-          { name: "Rasmalai", desc: "Soft cheese patties in saffron milk.", price: 6.49 },
-          { name: "Kulfi", desc: "Traditional Indian ice cream.", price: 4.99 },
-          { name: "Gajar Halwa", desc: "Warm carrot pudding with nuts.", price: 5.99 },
-          { name: "Elaneer Pudding", desc: "Tender coconut pudding with cardamom.", price: 6.49 },
+          { name: "Gulab Jamun", desc: "Milk dumplings in warm sugar syrup.", price: 5.49, image: "images/menu/Gulab jamun.jpeg" },
+          { name: "Rasmalai", desc: "Soft cheese patties in saffron milk.", price: 6.49, image: "images/menu/rasmalai.jpeg" },
+          { name: "Kulfi", desc: "Traditional Indian ice cream.", price: 4.99, image: "images/menu/kulfi.jpeg" },
+          { name: "Gajar Halwa", desc: "Warm carrot pudding with nuts.", price: 5.99, image: "images/menu/gajar ka halwa.jpeg" },
+          { name: "Jalebi", desc: "Crisp spiral funnel cakes soaked in warm saffron-scented sugar syrup", price: 6.49, image: "images/menu/jaelabi.jpeg" },
         ],
       },
     ];
@@ -505,6 +522,7 @@
         const card = document.createElement("div");
         card.className = "item-card";
         card.innerHTML = `
+          ${item.image ? `<div class="item-image"><img src="${item.image}" alt="${item.name}"></div>` : ""}
           <div class="item-name">${item.name}</div>
           <div class="item-desc">${item.desc}</div>
           <div class="item-footer">

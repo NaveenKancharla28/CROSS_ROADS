@@ -135,14 +135,15 @@
     /* ====== HERO ====== */
     .hero {
       position: relative;
-      height: 75vh;
+      height: 100vh;
       min-height: 480px;
-      background-image: url("images/tittle.jpg");
+      background-image: url("images/background2.jpg");
       background-size: cover;
       background-position: center;
+      background-attachment: fixed;
       color: white;
       display: flex;
-      align-items: flex-end;
+      align-items: center;
       justify-content: center;
     }
 
@@ -151,9 +152,9 @@
       inset: 0;
       background: linear-gradient(
         180deg,
-        rgba(0, 0, 0, 0.45) 0%,
-        rgba(0, 0, 0, 0.6) 60%,
-        rgba(0, 0, 0, 0.8) 100%
+        rgba(0, 0, 0, 0.35) 0%,
+        rgba(0, 0, 0, 0.45) 50%,
+        rgba(0, 0, 0, 0.55) 100%
       );
     }
 
@@ -161,15 +162,18 @@
       position: relative;
       max-width: 1100px;
       width: 100%;
-      padding: 40px 24px 56px;
+      padding: 40px 24px;
       display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
       gap: 24px;
+      z-index: 10;
     }
 
     .hero-text {
-      max-width: 520px;
+      max-width: 700px;
     }
 
     .hero-subtitle {
@@ -194,14 +198,15 @@
     .hero-cta {
       display: flex;
       flex-direction: column;
-      align-items: flex-end;
-      gap: 10px;
-      text-align: right;
-      font-size: 0.85rem;
+      align-items: center;
+      gap: 12px;
+      text-align: center;
+      font-size: 0.9rem;
     }
 
     .hero-cta span {
-      opacity: 0.9;
+      opacity: 0.95;
+      font-weight: 300;
     }
 
     /* ====== SECTIONS (COMMON) ====== */
@@ -234,6 +239,41 @@
     }
 
     /* ====== MENU ====== */
+    #menu {
+      position: relative;
+      background-image: url("images/chefbackground.jpeg");
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+
+    #menu::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.55);
+      z-index: 1;
+    }
+
+    #menu > * {
+      position: relative;
+      z-index: 2;
+    }
+
+    #menu .section-title {
+      color: white;
+    }
+
+    #menu .section-subtitle {
+      color: #e0e0e0;
+    }
+
+    #menu .menu-card {
+      background: rgba(255, 255, 255, 0.95);
+      border: 1px solid #e0d7c8;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    }
+
     .menu-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -263,6 +303,61 @@
     }
 
     /* ====== RESERVATIONS ====== */
+    #reservations {
+      position: relative;
+      background-image: url("images/backgroung.jpg");
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+
+    #reservations::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.55);
+      z-index: 1;
+    }
+
+    #reservations > * {
+      position: relative;
+      z-index: 2;
+    }
+
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      gap: 40px;
+      align-items: flex-start;
+      margin-bottom: 32px;
+    }
+
+    .section-title {
+      font-family: "Playfair Display", serif;
+      font-size: 1.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: white;
+    }
+
+    .section-subtitle {
+      max-width: 520px;
+      font-size: 0.95rem;
+      color: #ddd;
+    }
+
+    #reservations .section-title {
+      color: white;
+    }
+
+    #reservations .section-subtitle {
+      color: #e0e0e0;
+    }
+
+    #reservations .reservation-note {
+      color: #ddd;
+    }
+
     .reservation-wrapper {
       display: grid;
       grid-template-columns: 1.1fr 1fr;
@@ -276,10 +371,11 @@
     }
 
     .reservation-form {
-      background: #fdf8f0;
-      padding: 24px;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 32px;
       border-radius: 8px;
       border: 1px solid #e0d7c8;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
     }
 
     .form-row {
@@ -314,6 +410,111 @@
       min-height: 70px;
     }
 
+    /* ====== ONLINE ORDER (CTA SECTION) ====== */
+    #online-order {
+      position: relative;
+      background-image: url("images/fooddeliverybackground.jpeg");
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+
+    #online-order::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.55);
+      z-index: 1;
+    }
+
+    #online-order > * {
+      position: relative;
+      z-index: 2;
+    }
+
+    #online-order .section-title {
+      color: white;
+    }
+
+    #online-order .section-subtitle {
+      color: #e0e0e0;
+    }
+
+    #online-order p {
+      color: #ddd;
+    }
+
+    /* ====== CATERING SERVICES ====== */
+    #catering {
+      position: relative;
+      background-image: url("images/fooddeliverybackground.jpeg");
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+
+    #catering::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.55);
+      z-index: 1;
+    }
+
+    #catering > * {
+      position: relative;
+      z-index: 2;
+    }
+
+    #catering .section-title {
+      color: white;
+    }
+
+    #catering .section-subtitle {
+      color: #e0e0e0;
+    }
+
+    #catering p {
+      color: #ddd;
+      font-size: 0.95rem;
+      line-height: 1.8;
+    }
+
+    /* ====== WHAT'S NEW & CONTACT COMBINED ====== */
+    #news {
+      position: relative;
+      background-image: url("images/background3.jpeg");
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+
+    #news::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.55);
+      z-index: 1;
+    }
+
+    #news > * {
+      position: relative;
+      z-index: 2;
+    }
+
+    #news .section-title {
+      color: white;
+    }
+
+    #news .section-subtitle {
+      color: #e0e0e0;
+    }
+
+    #news .news-card {
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    }
+
     /* ====== WHAT'S NEW ====== */
     .news-grid {
       display: grid;
@@ -344,6 +545,53 @@
     }
 
     /* ====== CONTACT / LOCATION ====== */
+    #contact {
+      position: relative;
+      background-image: url("images/background3.jpeg");
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      border-top: none;
+    }
+
+    #contact::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.55);
+      z-index: 1;
+    }
+
+    #contact > * {
+      position: relative;
+      z-index: 2;
+    }
+
+    #contact .section-title {
+      color: white;
+    }
+
+    #contact .section-subtitle {
+      color: #e0e0e0;
+    }
+
+    #contact .contact-block h3 {
+      color: white;
+    }
+
+    #contact .contact-block p {
+      color: #ddd;
+    }
+
+    #contact .hours-list {
+      color: #ddd;
+    }
+
+    #contact .map-placeholder {
+      background: rgba(232, 223, 207, 0.9);
+      color: #555;
+    }
+
     .contact-grid {
       display: grid;
       grid-template-columns: 0.9fr 1.1fr;
@@ -465,9 +713,11 @@
     <nav>
       <div class="nav-links">
         <a href="#hero">Discover</a>
-        <a href="menu.html" target="_blank" rel="noopener noreferrer">Menu</a><a href="#menu">Menu</a>
+        <a href="menu.html" target="_blank" rel="noopener noreferrer">Menu</a>
+        <a href="#menu">Chef's Special</a>
         <a href="#reservations">Reservations</a>
-        <a href="#news">What’s New</a>
+        <a href="#catering">Catering Services</a>
+        <a href="#news">What's New</a>
         <a href="#contact">Visit Us</a>
       </div>
       <div class="nav-actions">
@@ -626,9 +876,27 @@
 
     <div style="display: flex; flex-wrap: wrap; gap: 12px;">
       <button class="btn-primary">Start Pickup Order</button>
-      <button class="btn-outline">Order on DoorDash</button>
-      <button class="btn-outline">Order on Uber Eats</button>
+      <button class="btn-primary">Order on DoorDash</button>
+      <button class="btn-primary">Order on Uber Eats</button>
     </div>
+  </section>
+
+  <!-- CATERING SERVICES -->
+  <section id="catering">
+    <div class="section-heading">
+      <h2 class="section-title">Catering Services</h2>
+      <p class="section-subtitle">
+        Bring the culinary excellence of CROSS ROADS to your next special event.
+      </p>
+    </div>
+
+    <p>
+      Cross Roads proudly offers gourmet catering for weddings, corporate events, and private gatherings.
+    </p>
+    <p>
+      To schedule your event, call <strong>(214) 555-1234</strong>.
+    </p>
+    <button class="btn-primary" style="margin-top: 16px;">Request Catering Quote</button>
   </section>
 
   <!-- WHAT'S NEW -->
@@ -743,7 +1011,7 @@
     </div>
   </footer>
 
-  <!-- ====== BASIC JS (smooth scroll + fake submit) ====== -->
+  <!-- ====== BASIC JS (smooth scroll + API integration) ====== -->
   <script>
     function scrollToSection(id) {
       const section = document.getElementById(id);
@@ -751,10 +1019,51 @@
       section.scrollIntoView({ behavior: "smooth" });
     }
 
-    function handleReservationSubmit(e) {
+    async function handleReservationSubmit(e) {
       e.preventDefault();
-      alert("Reservation request sent! (Next step: connect this form to a backend or email service.)");
-      e.target.reset();
+      
+      const form = e.target;
+      const submitBtn = form.querySelector('button[type="submit"]');
+      const originalText = submitBtn.innerText;
+      
+      // Get form data
+      const formData = {
+        name: document.getElementById('res-name').value,
+        phone: document.getElementById('res-phone').value,
+        email: document.getElementById('res-email').value,
+        date: document.getElementById('res-date').value,
+        time: document.getElementById('res-time').value,
+        guests: document.getElementById('res-guests').value,
+        notes: document.getElementById('res-notes').value,
+      };
+
+      try {
+        submitBtn.disabled = true;
+        submitBtn.innerText = 'Sending...';
+
+        const response = await fetch('/api/reservations', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+        });
+
+        const data = await response.json();
+
+        if (response.ok && data.success) {
+          alert('✓ Reservation request sent! Check your email for confirmation.');
+          form.reset();
+        } else {
+          alert('✗ Error: ' + (data.message || 'Failed to send reservation'));
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        alert('✗ Error sending reservation. Please try again or call (214) 555-1234');
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerText = originalText;
+      }
     }
   </script>
 </body>
