@@ -30,25 +30,26 @@ if (!fs.existsSync(dataDir)) {
 let transporter = null;
 let emailConfigured = false;
 
-if (process.env.GMAIL_USER && process.env.GMAIL_PASSWORD) {
-  transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-      user: process.env.GMAIL_USER,
-      pass: process.env.GMAIL_PASSWORD,
-    },
-  });
+// Initialize email transporter
+async function initializeEmail() {
+  if (process.env.GMAIL_USER && process.env.GMAIL_PASSWORD) {
+    transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: process.env.GMAIL_USER,
+        pass: process.env.GMAIL_PASSWORD,
+      },
+    });
 
-  // Verify transporter connection
-  transporter.verify((error, success) => {
-    if (error) {
-      console.error('⚠ Email service not available:', error.message);
-      console.log('✓ Reservations will be saved locally');
-    } else {
+    try {
+      await transporter.verify();
       console.log('✓ Email service ready');
       emailConfigured = true;
+    } catch (error) {
+      console.error('⚠ Email service not available:', error.message);
+      console.log('✓ Reservations will be saved locally');
     }
-  });
+  }
 }
 
 // POST endpoint for reservations
@@ -210,7 +211,10 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-app.listen(PORT, () => {
-  console.log(`✓ Server running on http://localhost:${PORT}`);
-  console.log(`📁 Reservations saved to: ${dataDir}`);
+// Initialize email and start server
+initializeEmail().then(() => {
+  app.listen(PORT, () => {
+    console.log(`✓ Server running on http://localhost:${PORT}`);
+    console.log(`📁 Reservations saved to: ${dataDir}`);
+  });
 });
