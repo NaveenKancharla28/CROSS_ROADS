@@ -663,35 +663,310 @@
       margin-top: 4px;
     }
 
-    /* ====== RESPONSIVE ====== */
+    /* ====== RESPONSIVE - TABLET (iPad) ====== */
+    @media (max-width: 1024px) {
+      nav {
+        padding: 10px 16px;
+        font-size: 0.75rem;
+        letter-spacing: 0.1em;
+      }
+
+      .nav-links {
+        gap: 16px;
+      }
+
+      section {
+        padding: 48px 20px;
+      }
+
+      .section-heading {
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .section-subtitle {
+        max-width: 100%;
+      }
+
+      .menu-grid,
+      .news-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+
+      .reservation-wrapper {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+    }
+
+    /* ====== RESPONSIVE - MOBILE ====== */
     @media (max-width: 768px) {
+      /* Top bar and brand */
+      .top-bar {
+        font-size: 0.65rem;
+        padding: 6px 12px;
+        letter-spacing: 0.1em;
+      }
+
+      .brand-logo {
+        font-size: 1.1rem;
+        padding: 14px 12px 8px;
+        letter-spacing: 0.15em;
+      }
+
+      /* Navbar */
       nav {
         flex-direction: column;
         gap: 12px;
+        padding: 12px 16px;
       }
 
       .nav-links {
         flex-wrap: wrap;
         justify-content: center;
+        gap: 10px 14px;
+        font-size: 0.7rem;
       }
 
+      .nav-actions {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .btn-outline,
+      .btn-primary {
+        padding: 8px 14px;
+        font-size: 0.7rem;
+      }
+
+      /* Hero */
       .hero {
-        height: 70vh;
+        height: auto;
+        min-height: 80vh;
+        background-attachment: scroll;
       }
 
       .hero-content {
-        flex-direction: column;
-        align-items: flex-start;
+        padding: 40px 16px;
+        align-items: center;
+        text-align: center;
+      }
+
+      .hero-text {
+        max-width: 100%;
+      }
+
+      .hero-subtitle {
+        font-size: 0.7rem;
+        letter-spacing: 0.15em;
+      }
+
+      .hero-title {
+        font-size: 1.8rem;
+        line-height: 1.3;
+      }
+
+      .hero-desc {
+        font-size: 0.85rem;
+        max-width: 100%;
+        margin: 0 auto;
       }
 
       .hero-cta {
-        align-items: flex-start;
-        text-align: left;
+        align-items: center;
+        text-align: center;
+        width: 100%;
       }
 
-      .reservation-wrapper,
+      .hero-cta span {
+        font-size: 0.8rem;
+      }
+
+      /* Sections */
+      section {
+        padding: 40px 16px;
+      }
+
+      .section-heading {
+        flex-direction: column;
+        gap: 12px;
+        margin-bottom: 24px;
+      }
+
+      .section-title {
+        font-size: 1.3rem;
+        letter-spacing: 0.05em;
+      }
+
+      .section-subtitle {
+        font-size: 0.85rem;
+        max-width: 100%;
+      }
+
+      /* Menu grid */
+      .menu-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .menu-card {
+        padding: 20px;
+      }
+
+      .menu-card h3 {
+        font-size: 1.1rem;
+      }
+
+      .menu-card ul {
+        font-size: 0.85rem;
+      }
+
+      /* Reservation form */
+      .reservation-wrapper {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .reservation-note {
+        font-size: 0.85rem;
+      }
+
+      .reservation-form {
+        padding: 20px;
+      }
+
+      .form-row {
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .form-group {
+        font-size: 0.75rem;
+      }
+
+      .form-group input,
+      .form-group select,
+      .form-group textarea {
+        padding: 10px 12px;
+        font-size: 0.9rem;
+      }
+
+      /* News grid */
+      .news-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .news-card {
+        padding: 20px;
+      }
+
+      .news-title {
+        font-size: 1rem;
+      }
+
+      /* Contact grid */
       .contact-grid {
         grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .contact-block h3 {
+        font-size: 1rem;
+      }
+
+      .contact-block p {
+        font-size: 0.85rem;
+      }
+
+      .hours-list {
+        font-size: 0.85rem;
+      }
+
+      .map-placeholder {
+        min-height: 200px;
+      }
+
+      /* Footer */
+      footer {
+        padding: 24px 16px 32px;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+      }
+
+      .footer-col-title {
+        font-size: 0.7rem;
+      }
+
+      /* Fix parallax on mobile */
+      #menu,
+      #reservations,
+      #online-order,
+      #catering,
+      #news,
+      #contact {
+        background-attachment: scroll;
+      }
+    }
+
+    /* ====== RESPONSIVE - SMALL MOBILE ====== */
+    @media (max-width: 480px) {
+      .top-bar {
+        font-size: 0.6rem;
+        line-height: 1.4;
+      }
+
+      .brand-logo {
+        font-size: 1rem;
+        letter-spacing: 0.1em;
+      }
+
+      .nav-links {
+        gap: 8px 12px;
+        font-size: 0.65rem;
+      }
+
+      .btn-outline,
+      .btn-primary {
+        padding: 6px 12px;
+        font-size: 0.65rem;
+      }
+
+      .hero-title {
+        font-size: 1.5rem;
+      }
+
+      .hero-desc {
+        font-size: 0.8rem;
+      }
+
+      .section-title {
+        font-size: 1.1rem;
+      }
+
+      .section-subtitle {
+        font-size: 0.8rem;
+      }
+
+      .menu-card,
+      .news-card {
+        padding: 16px;
+      }
+
+      .reservation-form {
+        padding: 16px;
       }
     }
   </style>
