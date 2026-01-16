@@ -24,6 +24,87 @@
     }
     h1, h2, h3 { font-family: "Playfair Display", serif; }
 
+    /* HAMBURGER MENU */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+      background: none;
+      border: none;
+      padding: 10px;
+    }
+
+    .hamburger span {
+      width: 25px;
+      height: 3px;
+      background-color: var(--accent);
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translateY(10px);
+    }
+
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translateY(-10px);
+    }
+
+    /* SIDE MENU */
+    .side-menu {
+      position: fixed;
+      top: 0;
+      left: -300px;
+      width: 300px;
+      height: 100vh;
+      background: #1a1a1a;
+      border-right: 1px solid var(--accent);
+      padding: 20px 0;
+      z-index: 1000;
+      transition: left 0.3s ease;
+      overflow-y: auto;
+    }
+
+    .side-menu.active {
+      left: 0;
+    }
+
+    .menu-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 999;
+    }
+
+    .menu-overlay.active {
+      display: block;
+    }
+
+    .side-menu-item {
+      display: block;
+      padding: 15px 20px;
+      color: var(--text-main);
+      text-decoration: none;
+      border-bottom: 1px solid #333;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    .side-menu-item:hover {
+      background: #333;
+      color: var(--accent);
+    }
+
     .page-wrapper {
       max-width: 1100px;
       margin: 0 auto;
@@ -325,6 +406,10 @@
 
     /* ====== RESPONSIVE - MOBILE ====== */
     @media (max-width: 768px) {
+      .hamburger {
+        display: flex;
+      }
+
       .top-bar {
         font-size: 0.65rem;
         padding: 6px 12px;
@@ -503,6 +588,21 @@
 <body>
   <div class="top-bar">Pan-Indian fine dining & home-style favorites</div>
   <div class="brand"><span>SOUL OF SOUTH</span> &nbsp;MENU</div>
+
+  <!-- HAMBURGER MENU -->
+  <button class="hamburger" id="hamburger-btn">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <!-- SIDE MENU -->
+  <div class="menu-overlay" id="menu-overlay"></div>
+  <nav class="side-menu" id="side-menu">
+    <div class="side-menu-item" onclick="showCategoryView(); closeMenu()">View Menu</div>
+    <div class="side-menu-item" onclick="handleCheckout(); closeMenu()">Checkout</div>
+    <div class="side-menu-item" onclick="window.location.href='index.html'; closeMenu()">Back to Main Site</div>
+  </nav>
 
   <div class="page-wrapper">
     <div class="menu-header">
@@ -988,6 +1088,25 @@
 
     // Expose changeQty for onclick in HTML
     window.changeQty = changeQty;
+
+    // HAMBURGER MENU FUNCTIONS
+    const hamburger = document.getElementById('hamburger-btn');
+    const sideMenu = document.getElementById('side-menu');
+    const menuOverlay = document.getElementById('menu-overlay');
+
+    hamburger.addEventListener('click', function() {
+      hamburger.classList.toggle('active');
+      sideMenu.classList.toggle('active');
+      menuOverlay.classList.toggle('active');
+    });
+
+    menuOverlay.addEventListener('click', closeMenu);
+
+    function closeMenu() {
+      hamburger.classList.remove('active');
+      sideMenu.classList.remove('active');
+      menuOverlay.classList.remove('active');
+    }
 
     // Init
     renderCategories();
