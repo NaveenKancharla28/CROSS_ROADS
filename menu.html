@@ -601,7 +601,7 @@
   <nav class="side-menu" id="side-menu">
     <div class="side-menu-item" onclick="showCategoryView(); closeMenu()">View Menu</div>
     <div class="side-menu-item" onclick="handleCheckout(); closeMenu()">Checkout</div>
-    <div class="side-menu-item" onclick="window.location.href='index.html'; closeMenu()">Back to Main Site</div>
+    <a href="javascript:window.history.back()" class="side-menu-item" onclick="closeMenu()">Back to Main Site</a>
   </nav>
 
   <div class="page-wrapper">
@@ -610,7 +610,7 @@
         <h1>Our Menu</h1>
         <p>Select a category to explore dishes. Use the + / − buttons to choose how many of each item you want.</p>
       </div>
-      <button class="btn-ghost" onclick="window.close()">Back to Main Site</button>
+      <button class="btn-ghost" onclick="window.history.back()">Back to Main Site</button>
     </div>
 
     <!-- CATEGORY GRID VIEW -->
