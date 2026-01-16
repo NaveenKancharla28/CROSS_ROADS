@@ -338,6 +338,228 @@
       color: #000;
     }
 
+    /* ITEM OPTIONS */
+    .item-options {
+      display: flex;
+      gap: 8px;
+      margin-top: 10px;
+      padding: 0 14px;
+    }
+
+    .option-box {
+      flex: 1;
+      padding: 8px;
+      border: 2px solid #ddd;
+      border-radius: 6px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      background: #f9f9f9;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #333;
+    }
+
+    .option-box:hover {
+      border-color: #b78b4b;
+      background: #fff;
+    }
+
+    .option-box.selected {
+      background: #b78b4b;
+      color: #fff;
+      border-color: #b78b4b;
+    }
+
+    /* CART SIDEBAR */
+    .cart-sidebar {
+      position: fixed;
+      top: 0;
+      right: -350px;
+      width: 350px;
+      height: 100vh;
+      background: #111;
+      border-left: 1px solid var(--accent);
+      padding: 20px;
+      z-index: 900;
+      transition: right 0.3s ease;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .cart-sidebar.active {
+      right: 0;
+    }
+
+    .cart-header {
+      font-size: 1.2rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid #333;
+    }
+
+    .cart-items {
+      flex: 1;
+      overflow-y: auto;
+      margin-bottom: 20px;
+    }
+
+    .cart-item {
+      background: #1a1a1a;
+      padding: 12px;
+      margin-bottom: 12px;
+      border-radius: 6px;
+      border: 1px solid #333;
+      font-size: 0.9rem;
+    }
+
+    .cart-item-name {
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: var(--accent);
+    }
+
+    .cart-item-option {
+      font-size: 0.8rem;
+      color: #999;
+      margin-bottom: 8px;
+    }
+
+    .cart-item-price {
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #fff;
+    }
+
+    .cart-item-controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .cart-qty {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid var(--accent);
+      border-radius: 4px;
+      padding: 4px 8px;
+    }
+
+    .cart-qty button {
+      background: none;
+      border: none;
+      color: var(--accent);
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .cart-qty span {
+      flex: 1;
+      text-align: center;
+    }
+
+    .cart-remove {
+      background: #8b0000;
+      color: #fff;
+      border: none;
+      padding: 4px 8px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.8rem;
+      transition: background 0.2s ease;
+    }
+
+    .cart-remove:hover {
+      background: #a00000;
+    }
+
+    .cart-empty {
+      text-align: center;
+      color: #666;
+      padding: 40px 20px;
+      font-size: 0.9rem;
+    }
+
+    .cart-summary {
+      border-top: 1px solid #333;
+      padding-top: 15px;
+      margin-top: auto;
+    }
+
+    .cart-total {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+
+    .cart-total-value {
+      color: var(--accent);
+      font-size: 1.1rem;
+    }
+
+    .cart-close-btn {
+      width: 100%;
+      padding: 10px;
+      background: #333;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      transition: background 0.2s ease;
+    }
+
+    .cart-close-btn:hover {
+      background: #444;
+    }
+
+    .cart-toggle {
+      position: fixed;
+      right: 20px;
+      bottom: 100px;
+      background: var(--accent);
+      color: #000;
+      border: none;
+      padding: 12px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      z-index: 800;
+      transition: all 0.2s ease;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+    }
+
+    .cart-toggle:hover {
+      transform: scale(1.05);
+      background: #c69d5f;
+    }
+
+    .cart-badge {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      background: #8b0000;
+      color: #fff;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: bold;
+    }
+
     /* CHECKOUT BAR */
     .checkout-bar {
       position: fixed;
@@ -586,7 +808,7 @@
 </head>
 
 <body>
-  <div class="top-bar">Pan-Indian fine dining & home-style favorites</div>
+  <div class="top-bar">Indian dining & home-style favorites</div>
   <div class="brand"><span>SOUL OF SOUTH</span> &nbsp;MENU</div>
 
   <!-- HAMBURGER MENU -->
@@ -603,6 +825,25 @@
     <div class="side-menu-item" onclick="handleCheckout(); closeMenu()">Checkout</div>
     <a href="javascript:window.history.back()" class="side-menu-item" onclick="closeMenu()">Back to Main Site</a>
   </nav>
+
+  <!-- CART SIDEBAR -->
+  <button class="cart-toggle" id="cart-toggle" onclick="toggleCartSidebar()">
+    🛒 Cart <span class="cart-badge" id="cart-badge-count" style="display: none;">0</span>
+  </button>
+  <div class="cart-sidebar" id="cart-sidebar">
+    <div class="cart-header">Your Cart</div>
+    <div class="cart-items" id="cart-items-list">
+      <div class="cart-empty">Your cart is empty</div>
+    </div>
+    <div class="cart-summary">
+      <div class="cart-total">
+        <span>Subtotal:</span>
+        <span class="cart-total-value">$<span id="cart-subtotal">0.00</span></span>
+      </div>
+      <button class="btn-checkout" onclick="handleCheckout(); toggleCartSidebar()" style="width: 100%; margin-bottom: 10px;">Proceed to Checkout</button>
+      <button class="cart-close-btn" onclick="toggleCartSidebar()">Close Cart</button>
+    </div>
+  </div>
 
   <div class="page-wrapper">
     <div class="menu-header">
@@ -747,15 +988,15 @@
         name: "Dosas",
         subtitle: "Crispy rice and lentil crepes with various fillings.",
         items: [
-          { name: "Masala Dosa", desc: "Crispy dosa filled with spiced potatoes.", price: 10.49, image: "images/menu/masala dosa.jpeg" },
+          { name: "Masala Dosa", desc: "Crispy dosa filled with spiced potatoes.", price: 10.49, image: "images/menu/masaladosa.jpeg" },
           { name: "Onion Dosa", desc: "Dosa topped with crispy fried onions.", price: 9.99, image: "images/menu/masaladosa.jpeg" },
           { name: "Mysore Masala Dosa", desc: "Dosa with spicy red chutney and potatoes.", price: 11.49, image: "images/menu/podi dosa.jpeg" },
-          { name: "Ghee Karam Dosa", desc: "Spicy dosa with ghee and special spices.", price: 11.99, image: "images/menu/ghee karam dosa.jpeg" },
-          { name: "Ghee Roast Dosa", desc: "Roasted dosa with ghee and spices.", price: 11.99, image: "images/menu/ghee roast dosa.jpeg" },
-          { name: "Paneer Dosa", desc: "Dosa filled with cottage cheese and vegetables.", price: 11.99, image: "images/menu/paneer dosa.jpeg" },
-          { name: "Chicken Tikka Dosa", desc: "Dosa filled with marinated chicken tikka.", price: 13.49, image: "images/menu/chicken tikka dosa.jpeg" },
-          { name: "Goat Kheema Dosa", desc: "Dosa filled with minced goat meat.", price: 13.99, image: "images/menu/goat kheema dosa.jpeg" },
-          { name: "Cheese Corn Dosa", desc: "Dosa filled with corn and cheese.", price: 11.99, image: "images/menu/cheese corn dosa.jpeg" },
+          { name: "Ghee Karam Dosa", desc: "Spicy dosa with ghee and special spices.", price: 11.99, image: "images/menu/GheeKaramDosa.jpg" },
+          { name: "Ghee Roast Dosa", desc: "Roasted dosa with ghee and spices.", price: 11.99, image: "images/menu/GheeRoastDosa.jpg" },
+          { name: "Paneer Dosa", desc: "Dosa filled with cottage cheese and vegetables.", price: 11.99, image: "images/menu/Panner Dosa.jpg" },
+          { name: "Chicken Tikka Dosa", desc: "Dosa filled with marinated chicken tikka.", price: 13.49, image: "images/menu/ChickenTikkaDosa.jpg" },
+          { name: "Goat Kheema Dosa", desc: "Dosa filled with minced goat meat.", price: 13.99, image: "images/menu/Goast Kheema Dosa.png" },
+          { name: "Cheese Corn Dosa", desc: "Dosa filled with corn and cheese.", price: 11.99, image: "images/menu/Cheesecorndosa.jpg" },
         ],
         
       },
@@ -765,7 +1006,7 @@
         subtitle: "Traditional South Indian breakfast specialties.",
         items: [
           { name: "Idly", desc: "Steamed rice cakes served with sambar & chutneys.", price: 8.99, image: "images/menu/idly sambar.jpeg" },
-          { name: "Mysore Bonda", desc: "Spiced lentil fritter with potato filling.", price: 8.49, image: "images/menu/Mirchi bajji.jpeg" },
+          { name: "Mysore Bonda", desc: "Spiced lentil fritter with potato filling.", price: 8.49, image: "images/menu/Mysore Bonda.jpg" },
           { name: "Medu Vada", desc: "Crispy lentil doughnuts with sambar.", price: 8.49, image: "images/menu/medu vada.jpeg" },
           { name: "Poori", desc: "Deep-fried puffed Indian bread.", price: 7.99, image: "images/menu/chole batture.jpeg" },
           { name: "Upma", desc: "Savory semolina porridge with vegetables.", price: 7.99, image: "images/menu/upma.jpeg" },
@@ -838,14 +1079,14 @@
       {
         id: "indo-chinese",
         name: "Desi Style/Bandi Style Chinese",
-        subtitle: "Flavorful noodles and fried rice with burnt garlic.",
+        subtitle: "Flavorful noodles and fried rice.",
         items: [
-          { name: "Chicken Noodles & Burnt Garlic", desc: "Stir-fried noodles with chicken and crispy burnt garlic.", price: 10.99, image: "images/menu/ChickenTikka.jpg" },
-          { name: "Egg Noodles & Burnt Garlic", desc: "Stir-fried noodles with egg and crispy burnt garlic.", price: 9.99, image: "images/menu/EggFriedMaggi.jpg" },
-          { name: "Veg Noodles & Burnt Garlic", desc: "Stir-fried noodles with vegetables and crispy burnt garlic.", price: 9.49, image: "images/menu/kidsNoodels.jpg" },
-          { name: "Chicken Fried Noodles & Burnt Garlic", desc: "Crispy fried noodles with chicken and burnt garlic.", price: 11.49, image: "images/menu/ChickenTikka.jpg" },
-          { name: "Egg Fried Noodles & Burnt Garlic", desc: "Crispy fried noodles with egg and burnt garlic.", price: 10.49, image: "images/menu/EggFriedMaggi.jpg" },
-          { name: "Veg Fried Rice & Burnt Garlic", desc: "Fried rice with vegetables and crispy burnt garlic.", price: 9.99, image: "images/menu/VegBiriyani.jpg" },
+          { name: "Chicken Noodles", desc: "Stir-fried noodles with chicken.", price: 10.99, image: "images/menu/ChickenTikka.jpg", options: [{ label: "Plain" }, { label: "Burnt Garlic" }] },
+          { name: "Egg Noodles", desc: "Stir-fried noodles with egg.", price: 9.99, image: "images/menu/EggFriedMaggi.jpg", options: [{ label: "Plain" }, { label: "Burnt Garlic" }] },
+          { name: "Veg Noodles", desc: "Stir-fried noodles with vegetables.", price: 9.49, image: "images/menu/kidsNoodels.jpg", options: [{ label: "Plain" }, { label: "Burnt Garlic" }] },
+          { name: "Chicken Fried Noodles", desc: "Crispy fried noodles with chicken.", price: 11.49, image: "images/menu/ChickenTikka.jpg", options: [{ label: "Plain" }, { label: "Burnt Garlic" }] },
+          { name: "Egg Fried Noodles", desc: "Crispy fried noodles with egg.", price: 10.49, image: "images/menu/EggFriedMaggi.jpg", options: [{ label: "Plain" }, { label: "Burnt Garlic" }] },
+          { name: "Veg Fried Rice", desc: "Fried rice with vegetables.", price: 9.99, image: "images/menu/VegBiriyani.jpg", options: [{ label: "Plain" }, { label: "Burnt Garlic" }] },
           { name: "Shrimp Fried Rice", desc: "Fried rice with fresh shrimp and aromatic spices.", price: 12.99, image: "images/menu/ShrimpBiriyani.jpg" },
           { name: "Flashman Fried Rice", desc: "Special fried rice with mixed ingredients and house spices.", price: 11.99, image: "images/menu/HyderabadiDumBiriyani.jpg" },
         ],
@@ -991,15 +1232,32 @@
           return;
         }
 
-        const key = `${categoryId}-${index}`;
+        const key = `${categoryId}|${index}`;
         const qty = cart[key] || 0;
+        const selectedOption = cart[`${key}|option`] || null;
 
         const card = document.createElement("div");
         card.className = "item-card";
+        
+        let optionsHTML = "";
+        if (item.options && item.options.length > 0) {
+          optionsHTML = `
+            <div class="item-options" id="options-${key}">
+              ${item.options.map((opt, optIdx) => `
+                <div class="option-box ${selectedOption === optIdx ? 'selected' : ''}" 
+                     onclick="selectOption('${key}', ${optIdx})">
+                  ${opt.label}
+                </div>
+              `).join("")}
+            </div>
+          `;
+        }
+
         card.innerHTML = `
           ${item.image ? `<div class="item-image"><img src="${item.image}" alt="${item.name}"></div>` : ""}
           <div class="item-name">${item.name}</div>
           <div class="item-desc">${item.desc}</div>
+          ${optionsHTML}
           <div class="item-footer">
             <div class="item-price">$${item.price.toFixed(2)}</div>
             <div class="qty-controls">
@@ -1020,7 +1278,7 @@
 
     // Update quantity and recalc cart
     function changeQty(categoryId, itemIndex, delta) {
-      const key = `${categoryId}-${itemIndex}`;
+      const key = `${categoryId}|${itemIndex}`;
       const category = menuData.find((c) => c.id === categoryId);
       if (!category) return;
       const item = category.items[itemIndex];
@@ -1042,10 +1300,13 @@
       let totalPrice = 0;
 
       Object.keys(cart).forEach((key) => {
+        // Skip option keys
+        if (key.includes('|option')) return;
+        
         const qty = cart[key];
         if (qty <= 0) return;
 
-        const [categoryId, indexStr] = key.split("-");
+        const [categoryId, indexStr] = key.split("|");
         const category = menuData.find((c) => c.id === categoryId);
         if (!category) return;
         const item = category.items[Number(indexStr)];
@@ -1057,6 +1318,87 @@
 
       cartCountEl.textContent = totalItems;
       cartTotalEl.textContent = totalPrice.toFixed(2);
+      
+      // Update cart sidebar
+      updateCartDisplay();
+      updateCartBadge(totalItems);
+    }
+
+    // Cart Display Functions
+    function updateCartDisplay() {
+      const cartItemsList = document.getElementById('cart-items-list');
+      const cartSubtotal = document.getElementById('cart-subtotal');
+      
+      let totalPrice = 0;
+      let hasItems = false;
+      let html = '';
+
+      Object.keys(cart).forEach((key) => {
+        // Skip option keys
+        if (key.includes('-option')) return;
+        
+        const qty = cart[key];
+        if (qty <= 0) return;
+
+        const [categoryId, indexStr] = key.split("|");
+        const category = menuData.find((c) => c.id === categoryId);
+        if (!category) return;
+        const item = category.items[Number(indexStr)];
+        if (!item) return;
+
+        hasItems = true;
+        const itemTotal = qty * item.price;
+        totalPrice += itemTotal;
+        
+        const optionIndex = cart[`${key}|option`];
+        const optionText = (optionIndex !== null && optionIndex !== undefined && item.options) 
+          ? item.options[optionIndex].label 
+          : '';
+
+        html += `
+          <div class="cart-item">
+            <div class="cart-item-name">${item.name}</div>
+            ${optionText ? `<div class="cart-item-option">Option: ${optionText}</div>` : ''}
+            <div class="cart-item-price">$${item.price.toFixed(2)}</div>
+            <div class="cart-item-controls">
+              <div class="cart-qty">
+                <button onclick="changeQty('${categoryId}', ${indexStr}, -1)">−</button>
+                <span>${qty}</span>
+                <button onclick="changeQty('${categoryId}', ${indexStr}, 1)">+</button>
+              </div>
+              <button class="cart-remove" onclick="removeFromCart('${key}')">Remove</button>
+            </div>
+          </div>
+        `;
+      });
+
+      if (!hasItems) {
+        html = '<div class="cart-empty">Your cart is empty</div>';
+      }
+
+      cartItemsList.innerHTML = html;
+      cartSubtotal.textContent = totalPrice.toFixed(2);
+    }
+
+    function updateCartBadge(count) {
+      const badge = document.getElementById('cart-badge-count');
+      if (count > 0) {
+        badge.textContent = count;
+        badge.style.display = 'flex';
+      } else {
+        badge.style.display = 'none';
+      }
+    }
+
+    function toggleCartSidebar() {
+      const cartSidebar = document.getElementById('cart-sidebar');
+      cartSidebar.classList.toggle('active');
+    }
+
+    function removeFromCart(key) {
+      delete cart[key];
+      delete cart[`${key}|option`];
+      recalcCart();
     }
 
     function handleCheckout() {
@@ -1064,17 +1406,29 @@
       let hasItems = false;
 
       Object.keys(cart).forEach((key) => {
+        // Skip option keys
+        if (key.includes('|option')) return;
+        
         const qty = cart[key];
         if (qty <= 0) return;
 
-        const [categoryId, indexStr] = key.split("-");
+        const [categoryId, indexStr] = key.split("|");
         const category = menuData.find((c) => c.id === categoryId);
         if (!category) return;
         const item = category.items[Number(indexStr)];
         if (!item) return;
 
         hasItems = true;
-        summary += `${qty} x ${item.name} ($${item.price.toFixed(2)})\n`;
+        let itemSummary = `${qty} x ${item.name}`;
+        
+        // Add selected option if exists
+        const optionIndex = cart[`${key}|option`];
+        if (optionIndex !== null && optionIndex !== undefined && item.options) {
+          itemSummary += ` (${item.options[optionIndex].label})`;
+        }
+        
+        itemSummary += ` ($${item.price.toFixed(2)})\n`;
+        summary += itemSummary;
       });
 
       if (!hasItems) {
@@ -1088,6 +1442,27 @@
 
     // Expose changeQty for onclick in HTML
     window.changeQty = changeQty;
+
+    // Select option for item
+    function selectOption(key, optionIndex) {
+      cart[`${key}|option`] = optionIndex;
+      
+      // Update UI - highlight selected option
+      const optionBoxes = document.querySelectorAll(`#options-${key} .option-box`);
+      optionBoxes.forEach((box, idx) => {
+        if (idx === optionIndex) {
+          box.classList.add('selected');
+        } else {
+          box.classList.remove('selected');
+        }
+      });
+    }
+
+    window.selectOption = selectOption;
+
+    // Expose cart functions
+    window.toggleCartSidebar = toggleCartSidebar;
+    window.removeFromCart = removeFromCart;
 
     // HAMBURGER MENU FUNCTIONS
     const hamburger = document.getElementById('hamburger-btn');
